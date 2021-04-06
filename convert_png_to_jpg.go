@@ -16,7 +16,9 @@ var sc = bufio.NewScanner(os.Stdin)
 
 func main() {
     var name string
+    fmt.Print("ディレクトリパスを入力してください:")
     fmt.Scan(&name)
+    
     //ファイルオープン
     var paths []string = getCurrentDirectory(name)
     for _, v := range paths{
@@ -59,7 +61,7 @@ func getCurrentDirectory(dir string) []string{
     //dir := "."
     files, err := ioutil.ReadDir(dir)
     if err != nil {
-        panic(err)
+        panic(err.Error() + ":" + dir)
     }
 
     var paths []string
